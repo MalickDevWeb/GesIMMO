@@ -5,6 +5,11 @@ WORKDIR /app
 # Render injecte ses propres variables (PORT, DATABASE_URL, etc.)
 ENV NODE_ENV=production
 
+# Prisma a besoin d'OpenSSL dans l'image pour le schema engine/migrations.
+RUN apt-get update -y \
+  && apt-get install -y --no-install-recommends openssl ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
 # Installer les dependances en premier pour profiter du cache Docker
 COPY package*.json ./
 RUN npm ci
