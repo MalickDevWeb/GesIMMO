@@ -87,6 +87,37 @@ npm run db:seed
 npm run dev
 ```
 
+## Deploiement Render (Neon)
+
+Le projet contient deja:
+
+- `render.yaml` (Blueprint Render)
+- `Dockerfile` (runtime Node + Prisma)
+- `.dockerignore`
+
+### Variables d'environnement a definir sur Render
+
+- `NODE_ENV=production`
+- `DATABASE_URL=postgresql://<user>:<password>@<host>/<database>?sslmode=require&channel_binding=require&schema=immo`
+- `CLOUDINARY_CLOUD_NAME=<votre_cloud_name>`
+- `CLOUDINARY_API_KEY=<votre_api_key>`
+- `CLOUDINARY_API_SECRET=<votre_api_secret>`
+
+### Etapes
+
+1. Pousser le repo sur GitHub
+2. Sur Render: **New +** -> **Blueprint**
+3. Selectionner le repository
+4. Verifier que Render detecte `render.yaml` avec `env: docker`
+5. Ajouter les variables d'environnement ci-dessus
+6. Lancer le deploy
+
+### Comportement du conteneur
+
+- Build image via `Dockerfile`
+- Au demarrage: `npx prisma migrate deploy && node src/app.js`
+- Health check: `/health`
+
 ## Endpoints principaux
 
 | Méthode | Route | Description |

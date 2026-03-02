@@ -1,0 +1,56 @@
+const messagesValidation = {
+  commun: {
+    auMoinsUnChamp: 'Au moins un champ est requis pour la mise à jour',
+  },
+  agence: {
+    codeFormat: 'Le code doit suivre le format : ex. DKR-01',
+    codeObligatoire: 'Le code est obligatoire',
+    codeVide: 'Le code ne peut pas être vide',
+    nomObligatoire: 'Le nom est obligatoire',
+    nomVide: 'Le nom ne peut pas être vide',
+    nomMin: 'Le nom doit contenir au moins 2 caractères',
+    adresseObligatoire: "L'adresse est obligatoire",
+    adresseVide: "L'adresse ne peut pas être vide",
+  },
+  client: {
+    prenomObligatoire: 'Le prénom est obligatoire',
+    prenomVide: 'Le prénom ne peut pas être vide',
+    nomObligatoire: 'Le nom est obligatoire',
+    nomVide: 'Le nom ne peut pas être vide',
+    emailInvalide: "L'email doit être valide",
+    emailObligatoire: "L'email est obligatoire",
+    telephoneFormat:
+      'Le téléphone doit commencer par +221 suivi de 77, 78 ou 76 et contenir 9 chiffres après +221',
+    agenceIdObligatoire: "L'identifiant de l'agence est obligatoire",
+    agenceIdNombre: "L'identifiant de l'agence doit être un nombre",
+    agenceIdEntier: "L'identifiant de l'agence doit être un nombre entier",
+  },
+  bien: {
+    titreObligatoire: 'Le titre est obligatoire',
+    titreVide: 'Le titre ne peut pas être vide',
+    typeInvalide: (types) => `Le type doit être l'un de : ${types.join(', ')}`,
+    typeObligatoire: 'Le type est obligatoire',
+    adresseObligatoire: "L'adresse est obligatoire",
+    adresseVide: "L'adresse ne peut pas être vide",
+    prixMin: 'Le prix doit être supérieur ou égal à 0',
+    prixObligatoire: 'Le prix est obligatoire',
+    agenceIdObligatoire: "L'identifiant de l'agence est obligatoire",
+    agenceIdNombre: "L'identifiant de l'agence doit être un nombre",
+    agenceIdEntier: "L'identifiant de l'agence doit être un nombre entier",
+  },
+  visite: {
+    clientIdObligatoire: "L'identifiant du client est obligatoire",
+    clientIdNombre: "L'identifiant du client doit être un nombre",
+    clientIdEntier: "L'identifiant du client doit être un nombre entier",
+    bienIdObligatoire: "L'identifiant du bien est obligatoire",
+    bienIdNombre: "L'identifiant du bien doit être un nombre",
+    bienIdEntier: "L'identifiant du bien doit être un nombre entier",
+    dateFutur: 'La date de visite doit être dans le futur',
+    dateObligatoire: 'La date de visite est obligatoire',
+    dateIso: 'La date doit être au format ISO (ex: 2024-12-25T10:00:00Z)',
+    statutInvalide: (statuts) => `Le statut doit être l'un de : ${statuts.join(', ')}`,
+    statutObligatoireMaj: 'Le statut est obligatoire pour la mise à jour',
+  },
+};
+
+module.exports = messagesValidation;
