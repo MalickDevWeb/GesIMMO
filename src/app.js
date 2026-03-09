@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 const messagesConfig = require('./messages/messages.config');
@@ -33,6 +34,21 @@ if (env.NODE_ENV === 'development') app.use(morgan('dev'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
   customSiteTitle: messagesConfig.swagger.titreSite,
 }));
+
+// Documentation PDF
+const documentationPath = path.join(
+  __dirname,
+  '..',
+  'documentation',
+  'DOCUMENTATION-MODULES-AGENCE-CLIENT-BIEN-VISITE-TOUT-EN-UN (1).pdf',
+);
+app.get('/documentation', (req, res, next) => {
+  res.type('application/pdf');
+  res.setHeader('Content-Disposition', 'inline; filename=\"documentation-tech221-immo.pdf\"');
+  res.sendFile(documentationPath, (err) => {
+    if (err) next(err);
+  });
+});
 
 //  Route de santé
 app.get('/health', (req, res) => {

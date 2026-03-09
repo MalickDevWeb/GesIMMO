@@ -21,6 +21,7 @@ RUN npx prisma generate
 # Copier le code applicatif
 COPY src ./src
 COPY swagger.json ./swagger.json
+COPY documentation ./documentation
 
 # Utilisateur non-root
 RUN useradd --create-home --shell /bin/bash appuser && chown -R appuser:appuser /app
