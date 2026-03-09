@@ -50,6 +50,11 @@ app.get('/documentation', (req, res, next) => {
   });
 });
 
+// Page par défaut -> documentation PDF
+app.get('/', (req, res) => {
+  res.redirect('/documentation');
+});
+
 //  Route de santé
 app.get('/health', (req, res) => {
   res.json({
